@@ -1,0 +1,411 @@
+{
+  "users": {
+    "vzofebwq49pr57tj6rza1p": {
+      "email": "muuk@aws.com",
+      "passwordHash": "123456",
+      "profile": {
+        "id": "vzofebwq49pr57tj6rza1p",
+        "income_range": "₹1,00,000 - ₹2,50,000",
+        "account_type": "salary",
+        "primary_bank": "SBI",
+        "primary_goal": "Save more"
+      }
+    },
+    "lkhlpk9h52y34it9rew": {
+      "email": "test1@gmail.com",
+      "passwordHash": "123456",
+      "profile": {
+        "id": "lkhlpk9h52y34it9rew",
+        "income_range": "₹50,000 - ₹1,00,000",
+        "account_type": "salary",
+        "primary_bank": "HDFC",
+        "primary_goal": "Save more"
+      }
+    },
+    "vbdc0rgx41d4yp29c66pup": {
+      "email": "muk@gmail.com",
+      "passwordHash": "123456",
+      "profile": {
+        "id": "vbdc0rgx41d4yp29c66pup",
+        "income_range": "₹50,000 - ₹1,00,000",
+        "account_type": "salary",
+        "primary_bank": "SBI",
+        "primary_goal": "Save more"
+      }
+    }
+  },
+  "transactions": [
+    {
+      "date": "2026-05-11",
+      "description": "test",
+      "amount": 25000,
+      "type": "credit",
+      "category": "Income",
+      "source": "manual",
+      "statement_id": null,
+      "id": "zswows4umal6slki2dnkel",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T01:38:53.802Z"
+    },
+    {
+      "date": "2026-05-24",
+      "description": "SWIGGY",
+      "amount": 350,
+      "type": "debit",
+      "category": "Food",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "qmyozri0b2b5jwpo3kxn8a",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-23",
+      "description": "ZOMATO",
+      "amount": 640,
+      "type": "debit",
+      "category": "Food",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "lf0yflixm6pr6swkksla",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-22",
+      "description": "UBER INDIA",
+      "amount": 480,
+      "type": "debit",
+      "category": "Transport",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "3ih4ilftrtz7ivm9rc0ntj",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-21",
+      "description": "OLA RECHARGES",
+      "amount": 120,
+      "type": "debit",
+      "category": "Transport",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "yuw2vpgk7hempmvfss1np",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-20",
+      "description": "AMAZON PAY INDIA",
+      "amount": 1849,
+      "type": "debit",
+      "category": "Shopping",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "5igw72z4gjrvrrtysftb6q",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-19",
+      "description": "NETFLIX ENTERTAINMENT",
+      "amount": 649,
+      "type": "debit",
+      "category": "Entertainment",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "ita0ndhexhiurcjekf3or",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-18",
+      "description": "HDFC EMI LOAN PAYMENT",
+      "amount": 12500,
+      "type": "debit",
+      "category": "EMI",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "mao1lsl2zj6fxo2g33mol",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-17",
+      "description": "REMASHU IN827419",
+      "amount": 3000,
+      "type": "debit",
+      "category": "Other",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "g178gmwufa5933mr98dctw",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-16",
+      "description": "KUMAR GROCERY STORE",
+      "amount": 850,
+      "type": "debit",
+      "category": "Food",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "h80qk3txnx5qgu0aesskm",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-15",
+      "description": "FLIPKART INTERNET",
+      "amount": 2999,
+      "type": "debit",
+      "category": "Shopping",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "yq4ue89vrqvm7nov6pc6i",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-14",
+      "description": "AIRTEL INVOICE BILL",
+      "amount": 799,
+      "type": "debit",
+      "category": "Utilities",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "bo0t0g3781f9y9dgy1vnah",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-13",
+      "description": "ACT FIBERNET WATER BILL",
+      "amount": 1150,
+      "type": "debit",
+      "category": "Utilities",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "x2hydv4sfz803tndow5mu",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-12",
+      "description": "GROWW MUTUAL FUND SIP",
+      "amount": 5000,
+      "type": "debit",
+      "category": "Savings",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "gruueihlk8954sx7s3eyih",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-11",
+      "description": "SALARY NEFT DISBURSEMENT",
+      "amount": 95000,
+      "type": "credit",
+      "category": "Income",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "mzpl9ye0owc218d5inugsv",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-10",
+      "description": "INTEREST CREDIT INWARD",
+      "amount": 412,
+      "type": "credit",
+      "category": "Income",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "9qiec0241qalh3zfyppbci",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    },
+    {
+      "date": "2026-05-09",
+      "description": "UPI REF 6821A938",
+      "amount": 150,
+      "type": "debit",
+      "category": "Other",
+      "source": "uploaded",
+      "statement_id": null,
+      "id": "wfk8ayw4hrfwt27b4dpc5d",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "created_at": "2026-05-25T02:38:17.556Z"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "d14idf5t68ju3whv5tli0c",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Food",
+      "limit_amount": 2000
+    },
+    {
+      "id": "14xyjsx2bafs3sr2pcbu",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Transport",
+      "limit_amount": 2500
+    },
+    {
+      "id": "705s1q5yl097pip5ftctp",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Rent",
+      "limit_amount": 5000
+    },
+    {
+      "id": "ot09oebjqzgq45pi7dxp4",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "EMI",
+      "limit_amount": 0
+    },
+    {
+      "id": "qveg0qsi369qjdz9hn6p2",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Shopping",
+      "limit_amount": 0
+    },
+    {
+      "id": "b55hmw2bwgsmjflcyyocm",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Medical",
+      "limit_amount": 0
+    },
+    {
+      "id": "r2r8v7yccd8wdvshoy5x9",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Entertainment",
+      "limit_amount": 0
+    },
+    {
+      "id": "w30ry6p5djrbp90nrtscw8",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Business",
+      "limit_amount": 0
+    },
+    {
+      "id": "77zhxkbr3ihzm7wza31rtg",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Family",
+      "limit_amount": 0
+    },
+    {
+      "id": "r1wlsoufdadqpfonpe7e98",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Utilities",
+      "limit_amount": 0
+    },
+    {
+      "id": "0c2r5hnft7tevwsvwrfssen",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Savings",
+      "limit_amount": 0
+    },
+    {
+      "id": "0joj59znwneq8w4uiuheuz5",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Income",
+      "limit_amount": 0
+    },
+    {
+      "id": "4yd6ciggosgsqi8sfshab",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "month": "2026-05-01",
+      "category": "Other",
+      "limit_amount": 0
+    }
+  ],
+  "goals": [
+    {
+      "id": "dl6rlqxfggrx3d8qdj2nra",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "name": "Emergency fund ",
+      "target_amount": 100000,
+      "current_amount": 100000,
+      "target_date": "2026-11-01",
+      "created_at": "2026-05-25T01:47:07.667Z"
+    },
+    {
+      "id": "9dza9e46firugu27us1g4",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "name": "Car",
+      "target_amount": 2000000,
+      "current_amount": 0,
+      "target_date": "2027-05-01",
+      "created_at": "2026-05-25T03:22:23.992Z"
+    }
+  ],
+  "payee_mappings": [],
+  "statements": [],
+  "net_worth_snapshots": [
+    {
+      "id": "81fzh1muu9cbdl36f4r5af",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "snapshot_date": "2026-05-01",
+      "assets": {
+        "savings": 1500000,
+        "fixed_deposits": 200000,
+        "mutual_funds": 350000,
+        "property": 0
+      },
+      "liabilities": {
+        "credit_card": 25000,
+        "personal_loan": 120000,
+        "home_loan": 0
+      },
+      "net_worth": 1905000
+    },
+    {
+      "id": "kcjs2nj9xvqy47od5djdqo",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "snapshot_date": "2026-04-01",
+      "assets": {
+        "savings": 150000,
+        "fixed_deposits": 200000,
+        "mutual_funds": 350000,
+        "property": 0
+      },
+      "liabilities": {
+        "credit_card": 25000,
+        "personal_loan": 120000,
+        "home_loan": 0
+      },
+      "net_worth": 555000
+    },
+    {
+      "id": "qo38gqir7g08kofrwdgzxw",
+      "user_id": "lkhlpk9h52y34it9rew",
+      "snapshot_date": "2026-03-01",
+      "assets": {
+        "savings": 150000,
+        "fixed_deposits": 2000000,
+        "mutual_funds": 350000,
+        "property": 0
+      },
+      "liabilities": {
+        "credit_card": 25000,
+        "personal_loan": 120000,
+        "home_loan": 0
+      },
+      "net_worth": 2355000
+    }
+  ]
+}
