@@ -23,34 +23,56 @@ export async function POST(req: NextRequest) {
 
     // 1. Create User
     if (isSupabaseConfigured && supabaseServer) {
-      // Create user in Supabase Auth
-      const { data, error } = await supabaseServer.auth.signUp({
-        email,
-        password
-      });
+      let signupData: any = null;
+      let signupError: any = null;
 
-      if (error) {
+      // Try using Admin API to create and auto-confirm user (requires service role key)
+      try {
+        const { data, error } = await supabaseServer.auth.admin.createUser({
+          email,
+          password,
+          email_confirm: true
+        });
+        if (!error && data?.user) {
+          signupData = data;
+        } else {
+          signupError = error;
+        }
+      } catch (adminErr) {
+        signupError = adminErr;
+      }
+
+      // If Admin API failed (e.g., service role key is not configured/valid), fall back to standard signup
+      if (!signupData) {
+        const { data, error } = await supabaseServer.auth.signUp({
+          email,
+          password
+        });
+        if (error) {
+          return NextResponse.json(
+            { data: null, error: error.message },
+            { status: 400 }
+          );
+        }
+        signupData = data;
+      }
+
+      if (!signupData || !signupData.user) {
         return NextResponse.json(
-          { data: null, error: error.message },
+          { data: null, error: signupError?.message || 'Failed to create user in authentication provider' },
           { status: 400 }
         );
       }
 
-      if (!data.user) {
-        return NextResponse.json(
-          { data: null, error: 'Failed to create user in authentication provider' },
-          { status: 400 }
-        );
-      }
-
-      userId = data.user.id;
-      userEmail = data.user.email || email;
+      userId = signupData.user.id;
+      userEmail = signupData.user.email || email;
     } else {
       // For MVP/offline mode, we run our robust local mock auth
       const mockUser = await dbMockSignUp(email, password);
       userId = mockUser.id;
       userEmail = mockUser.email;
     }
+
 
     // 2. Save Onboarding Meta
     const profile = await dbSaveUserProfile(userId, {
