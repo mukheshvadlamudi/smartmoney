@@ -3,6 +3,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { randomUUID } from 'crypto';
 import { isSupabaseConfigured, supabaseServer } from './supabase';
 import { 
   Transaction, 
@@ -70,7 +71,7 @@ function writeLocalDB(db: LocalDB) {
 }
 
 function generateUUID(): string {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  return randomUUID();
 }
 
 // -------------------------------------------------------------
