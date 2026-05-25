@@ -26,6 +26,7 @@ export async function GET(
     // 2. Initialise counters
     let totalIncome = 0;
     let totalSpent = 0;
+    let totalSavings = 0;
     
     const categoryTotals: Record<string, number> = {};
     let biggestExpense = { id: '', description: '', amount: 0, date: '' };
@@ -38,13 +39,17 @@ export async function GET(
       if (tx.type === 'credit') {
         totalIncome += amt;
       } else {
-        totalSpent += amt;
+        if (tx.category === 'Savings') {
+          totalSavings += amt;
+        } else {
+          totalSpent += amt;
+        }
         
         // Category totals
         categoryTotals[tx.category] = (categoryTotals[tx.category] || 0) + amt;
         
-        // Biggest single expense
-        if (amt > biggestExpense.amount) {
+        // Biggest single expense (excluding explicit savings)
+        if (tx.category !== 'Savings' && amt > biggestExpense.amount) {
           biggestExpense = {
             id: tx.id,
             description: tx.description,
@@ -146,7 +151,7 @@ export async function GET(
         summary: {
           income: totalIncome,
           spending: totalSpent,
-          savings: totalIncome - totalSpent
+          savings: totalSavings
         },
         categoryBreakdown,
         biggestExpense: biggestExpense.amount > 0 ? biggestExpense : null,

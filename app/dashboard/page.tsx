@@ -69,11 +69,17 @@ export default function Dashboard() {
     .filter(t => t.type === 'credit')
     .reduce((sum, t) => sum + Number(t.amount), 0);
 
-  const totalSpent = transactions
-    .filter(t => t.type === 'debit')
+  // Actual Savings (debits categorized as 'Savings')
+  const actualSavings = transactions
+    .filter(t => t.type === 'debit' && t.category === 'Savings')
     .reduce((sum, t) => sum + Number(t.amount), 0);
 
-  const totalSaved = totalIncome - totalSpent;
+  // Cost of living spent (debits excluding 'Savings' category)
+  const totalSpent = transactions
+    .filter(t => t.type === 'debit' && t.category !== 'Savings')
+    .reduce((sum, t) => sum + Number(t.amount), 0);
+
+  const remainingSurplus = totalIncome - totalSpent - actualSavings;
 
   // Category aggregates
   const categorySpent: Record<string, number> = {};
@@ -299,7 +305,7 @@ export default function Dashboard() {
                 <div className="clay-icon-container" style={{ background: '#ffedd5', color: '#ea580c' }}>
                   <TrendingDown style={{ width: '1.5rem', height: '1.5rem' }} />
                 </div>
-                <span style={{ fontSize: '0.65rem', fontWeight: 600, color: '#ea580c', letterSpacing: '0.12em', textTransform: 'uppercase' }}>SPENT THIS MONTH</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 600, color: '#ea580c', letterSpacing: '0.12em', textTransform: 'uppercase' }}>EXPENSES THIS MONTH</span>
                 <h2 style={{ fontSize: '2.25rem', fontWeight: 600, color: '#111827', margin: '0.25rem 0 0.5rem 0', letterSpacing: '-0.02em' }}>
                   ₹{totalSpent.toLocaleString('en-IN')}
                 </h2>
@@ -317,19 +323,64 @@ export default function Dashboard() {
                 )}
               </div>
 
-              {/* Card 3: Savings */}
-              <div className="clay-card" style={{ background: '#f0f9ff', border: '1px solid rgba(14, 165, 233, 0.25)' }}>
-                <div className="clay-icon-container" style={{ background: '#e0f2fe', color: '#0284c7' }}>
-                  <PiggyBank style={{ width: '1.5rem', height: '1.5rem' }} />
+              {/* Card 3: Remaining Surplus */}
+              <div className="clay-card" style={{ background: '#f0f9ff', border: '1px solid rgba(14, 165, 233, 0.25)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div className="clay-icon-container" style={{ background: '#e0f2fe', color: '#0284c7', marginBottom: '0.75rem' }}>
+                      <PiggyBank style={{ width: '1.5rem', height: '1.5rem' }} />
+                    </div>
+                    <div style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 700,
+                      background: '#e0f2fe',
+                      color: '#0284c7',
+                      padding: '0.2rem 0.6rem',
+                      borderRadius: '9999px'
+                    }}>
+                      SAVED: ₹{actualSavings.toLocaleString('en-IN')}
+                    </div>
+                  </div>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 600, color: '#0284c7', letterSpacing: '0.12em', textTransform: 'uppercase' }}>REMAINING SURPLUS</span>
+                  <h2 style={{ fontSize: '2.25rem', fontWeight: 600, color: '#111827', margin: '0.25rem 0 0.5rem 0', letterSpacing: '-0.02em' }}>
+                    ₹{remainingSurplus.toLocaleString('en-IN')}
+                  </h2>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.82rem', color: remainingSurplus >= 0 ? '#10b981' : '#ef4444', fontWeight: 600 }}>
+                    <TrendingUp style={{ width: '1rem', height: '1rem' }} />
+                    <span>Savings rate: {totalIncome > 0 ? Math.round((actualSavings / totalIncome) * 100) : 0}%</span>
+                  </div>
                 </div>
-                <span style={{ fontSize: '0.65rem', fontWeight: 600, color: '#0284c7', letterSpacing: '0.12em', textTransform: 'uppercase' }}>SAVED THIS MONTH</span>
-                <h2 style={{ fontSize: '2.25rem', fontWeight: 600, color: '#111827', margin: '0.25rem 0 0.5rem 0', letterSpacing: '-0.02em' }}>
-                  ₹{totalSaved.toLocaleString('en-IN')}
-                </h2>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.82rem', color: totalSaved > 0 ? '#10b981' : '#ef4444', fontWeight: 600 }}>
-                  <TrendingUp style={{ width: '1rem', height: '1rem' }} />
-                  <span>Savings rate: {totalIncome > 0 ? Math.round((totalSaved / totalIncome) * 100) : 0}%</span>
-                </div>
+
+                {remainingSurplus > 0 && (
+                  <button 
+                    onClick={() => {
+                      setAmount(remainingSurplus.toString());
+                      setCategory('Savings');
+                      setDescription('Monthly surplus sweep');
+                      setType('debit');
+                      setShowAddModal(true);
+                    }}
+                    style={{
+                      marginTop: '0.75rem',
+                      padding: '0.35rem 0.85rem',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      color: '#0284c7',
+                      background: '#e0f2fe',
+                      border: 'none',
+                      borderRadius: '9999px',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.25rem',
+                      alignSelf: 'flex-start',
+                      boxShadow: '0 2px 4px rgba(2, 132, 199, 0.1)'
+                    }}
+                  >
+                    <Plus style={{ width: '0.85rem', height: '0.85rem' }} />
+                    <span>Sweep to Savings</span>
+                  </button>
+                )}
               </div>
             </div>
 

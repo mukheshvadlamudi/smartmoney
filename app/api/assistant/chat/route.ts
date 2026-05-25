@@ -46,21 +46,28 @@ export async function POST(req: NextRequest) {
     ]);
 
     // 2. Compute mathematical details to inject as context
-    const spentTxs = transactions.filter(tx => tx.type === 'debit');
-    const incomeTxs = transactions.filter(tx => tx.type === 'credit');
-    const totalIncome = incomeTxs.reduce((sum, tx) => sum + Number(tx.amount), 0);
-    const totalSpent = spentTxs.reduce((sum, tx) => sum + Number(tx.amount), 0);
-    const totalSaved = Math.max(0, totalIncome - totalSpent);
+    const creditTxs = transactions.filter(tx => tx.type === 'credit');
+    const debitTxs = transactions.filter(tx => tx.type === 'debit');
+    
+    const totalIncome = creditTxs.reduce((sum, tx) => sum + Number(tx.amount), 0);
+    const actualSavings = debitTxs
+      .filter(tx => tx.category === 'Savings')
+      .reduce((sum, tx) => sum + Number(tx.amount), 0);
+    const totalSpent = debitTxs
+      .filter(tx => tx.category !== 'Savings')
+      .reduce((sum, tx) => sum + Number(tx.amount), 0);
+    const remainingSurplus = totalIncome - totalSpent - actualSavings;
 
     const categoryTotals: Record<string, number> = {};
-    spentTxs.forEach(tx => {
+    debitTxs.forEach(tx => {
       categoryTotals[tx.category] = (categoryTotals[tx.category] || 0) + Number(tx.amount);
     });
 
     let context = `Active Sandbox Month: ${month}\n`;
     context += `Total Monthly Income (Credits): ₹${totalIncome.toLocaleString('en-IN')}\n`;
-    context += `Total Monthly Expenses (Debits): ₹${totalSpent.toLocaleString('en-IN')}\n`;
-    context += `Calculated Savings Surplus: ₹${totalSaved.toLocaleString('en-IN')}\n\n`;
+    context += `Total Monthly Expenses (excluding Savings): ₹${totalSpent.toLocaleString('en-IN')}\n`;
+    context += `Actual savings logged (under Savings category): ₹${actualSavings.toLocaleString('en-IN')}\n`;
+    context += `Calculated Remaining Cash Surplus: ₹${remainingSurplus.toLocaleString('en-IN')}\n\n`;
 
     context += `Category Outflows Breakdown:\n`;
     Object.entries(categoryTotals).forEach(([cat, amt]) => {
